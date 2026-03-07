@@ -109,6 +109,7 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             -- NOTE: add other tools for Mason here
+            'fish-lsp',
             'tombi',
         })
 
