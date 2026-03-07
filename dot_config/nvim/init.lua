@@ -7,8 +7,7 @@ vim.o.number = true
 
 vim.o.mouse = "a"
 
--- TODO: uncomment when statusline plugin installed
--- vim.o.showmode = false
+vim.o.showmode = false
 
 -- NOTE: maybe one day we don't want to sync with system clipboard
 vim.schedule(function()
@@ -73,3 +72,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 require("config.lazy")
+
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
