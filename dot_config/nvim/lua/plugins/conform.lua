@@ -28,6 +28,7 @@ return {
         end,
         formatters_by_ft = {
             -- NOTE: install other formatters here
+            fish = { 'fish_indent' },
             lua = { 'stylua' },
             toml = { 'tombi' },
         },
