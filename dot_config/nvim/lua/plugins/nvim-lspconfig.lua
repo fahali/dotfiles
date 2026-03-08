@@ -104,12 +104,33 @@ return {
                     Lua = {},
                 },
             },
+            rust_analyzer = {
+                settings = {
+                    ['rust-analyzer'] = {
+                        imports = {
+                            granularity = {
+                                group = 'module',
+                            },
+                            prefix = 'self',
+                        },
+                        cargo = {
+                            buildScripts = {
+                                enable = true,
+                            },
+                        },
+                        procMacro = {
+                            enable = true,
+                        },
+                    },
+                },
+            },
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             -- NOTE: add other tools for Mason here
             'fish-lsp',
+            'rust-analyzer',
             'tombi',
         })
 

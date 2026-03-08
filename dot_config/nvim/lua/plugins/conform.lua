@@ -30,6 +30,7 @@ return {
             -- NOTE: install other formatters here
             fish = { 'fish_indent' },
             lua = { 'stylua' },
+            rust = { 'rustfmt' },
             toml = { 'tombi' },
         },
     },
