@@ -73,7 +73,7 @@ return {
 
         ---@type table<string, vim.lsp.Config>
         local servers = {
-            stylua = {},
+            fish_lsp = {},
             lua_ls = {
                 on_init = function(client)
                     if client.workspace_folders then
@@ -104,6 +104,9 @@ return {
                     Lua = {},
                 },
             },
+            stylua = {},
+            tombi = {},
+            -- NOTE: might want mrcjkb/rustaceanvim in the future
             rust_analyzer = {
                 settings = {
                     ['rust-analyzer'] = {
@@ -127,12 +130,7 @@ return {
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
-        vim.list_extend(ensure_installed, {
-            -- NOTE: add other tools for Mason here
-            'fish-lsp',
-            'rust-analyzer',
-            'tombi',
-        })
+        vim.list_extend(ensure_installed, {})
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
