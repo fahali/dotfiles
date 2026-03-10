@@ -1,0 +1,10 @@
+theme = Kanagawa Wave
+
+background-opacity = 0.8
+background-blur = true
+
+window-inherit-working-directory = false
+
+font-thicken = true
+font-thicken-strength = 0
+
