@@ -15,6 +15,13 @@ vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 vim.o.breakindent = true
 
+-- NOTE: 'base' Neovim indentation set at 4 whitespace characters
+-- ftplugin/make.lua overrides with 8 character wide tabs
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = true
+
 -- TODO: install undotree?
 vim.o.undofile = true
 
