@@ -2,6 +2,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 vim.g.have_nerd_font = true
+vim.o.termguicolors = true
 
 vim.o.number = true
 
@@ -62,12 +63,20 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus below' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus above' })
 vim.keymap.set('n', '<C-q>', '<cmd>bdel<CR>', { desc = 'Close a buffer' })
 
-vim.keymap.set('n', '<leader>rw', '<cmd>Explore<CR>', { desc = 'Open Netrw' })
+vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking text',
     group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'help',
+    callback = function()
+        vim.cmd 'only'
+        vim.bo.buflisted = true
+    end,
 })
 
 require 'config.lazy'

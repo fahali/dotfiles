@@ -8,10 +8,27 @@ return {
             ---@module 'mason.settings'
             ---@type MasonSettings
             ---@diagnostic disable-next-line: missing-fields
-            opts = {},
+            opts = {
+                ui = {
+                    icons = {
+                        package_installed = '✓',
+                        package_pending = '➜',
+                        package_uninstalled = '✗',
+                    },
+                },
+            },
         },
         -- NOTE: https://github.com/mason-org/mason-lspconfig.nvim
-        'mason-org/mason-lspconfig.nvim',
+        {
+            'mason-org/mason-lspconfig.nvim',
+            opts = {
+                automatic_enable = {
+                    exclude = {
+                        'jdtls',
+                    },
+                },
+            },
+        },
         -- NOTE: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
         'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -73,8 +90,6 @@ return {
 
         ---@type table<string, vim.lsp.Config>
         local servers = {
-            fish_lsp = {},
-            jdtls = {},
             lua_ls = {
                 on_init = function(client)
                     if client.workspace_folders then
@@ -109,8 +124,6 @@ return {
                     },
                 },
             },
-            stylua = {},
-            tombi = {},
             -- NOTE: might want mrcjkb/rustaceanvim in the future
             rust_analyzer = {
                 settings = {
@@ -136,17 +149,20 @@ return {
 
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
+            'fish-lsp',
+            'jdtls',
+            'google-java-format',
             'java-debug-adapter',
             'java-test',
+            'stylua',
+            'tombi',
         })
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
         for name, server in pairs(servers) do
-            if name ~= 'jdtls' then
-                vim.lsp.config(name, server)
-                vim.lsp.enable(name)
-            end
+            vim.lsp.config(name, server)
+            vim.lsp.enable(name)
         end
     end,
 }
