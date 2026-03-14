@@ -74,6 +74,7 @@ return {
         ---@type table<string, vim.lsp.Config>
         local servers = {
             fish_lsp = {},
+            jdtls = {},
             lua_ls = {
                 on_init = function(client)
                     if client.workspace_folders then
@@ -101,7 +102,11 @@ return {
                     })
                 end,
                 settings = {
-                    Lua = {},
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' },
+                        },
+                    },
                 },
             },
             stylua = {},
@@ -130,13 +135,18 @@ return {
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
-        vim.list_extend(ensure_installed, {})
+        vim.list_extend(ensure_installed, {
+            'java-debug-adapter',
+            'java-test',
+        })
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
         for name, server in pairs(servers) do
-            vim.lsp.config(name, server)
-            vim.lsp.enable(name)
+            if name ~= 'jdtls' then
+                vim.lsp.config(name, server)
+                vim.lsp.enable(name)
+            end
         end
     end,
 }

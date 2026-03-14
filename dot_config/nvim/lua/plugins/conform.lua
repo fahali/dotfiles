@@ -29,9 +29,17 @@ return {
         formatters_by_ft = {
             -- NOTE: install other formatters here
             fish = { 'fish_indent' },
+            java = { 'google-java-format' },
             lua = { 'stylua' },
             rust = { 'rustfmt' },
             toml = { 'tombi' },
+        },
+        formatters = {
+            google_java_format = {
+                append_args = {
+                    '--aosp',
+                },
+            },
         },
     },
 }
