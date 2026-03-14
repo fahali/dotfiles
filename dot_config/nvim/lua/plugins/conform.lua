@@ -35,8 +35,8 @@ return {
             toml = { 'tombi' },
         },
         formatters = {
-            google_java_format = {
-                append_args = {
+            ['google-java-format'] = {
+                prepend_args = {
                     '--aosp',
                 },
             },
