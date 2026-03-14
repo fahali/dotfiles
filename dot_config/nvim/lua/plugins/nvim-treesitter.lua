@@ -6,7 +6,25 @@ return {
     branch = 'main',
     config = function()
         -- NOTE: add more parsers here as needed
-        local parsers = { 'fish', 'java', 'lua', 'luadoc', 'rust', 'toml', 'vim', 'vimdoc' }
+        local parsers = {
+            'dockerfile',
+            'fish',
+            'go',
+            'java',
+            'javadoc',
+            'json',
+            'lua',
+            'luadoc',
+            'markdown',
+            'markdown_inline',
+            'python',
+            'rust',
+            'toml',
+            'vim',
+            'vimdoc',
+            'xml',
+            'yaml',
+        }
         require('nvim-treesitter').install(parsers)
         vim.api.nvim_create_autocmd('FileType', {
             callback = function(args)

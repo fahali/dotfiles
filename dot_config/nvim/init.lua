@@ -5,6 +5,7 @@ vim.g.have_nerd_font = true
 vim.o.termguicolors = true
 
 vim.o.number = true
+vim.wo.relativenumber = true
 
 vim.o.mouse = 'a'
 
@@ -64,11 +65,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: use <C-\><C-n> if this doesn't work
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- NOTE: quality of life keymaps
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus below' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus above' })
-vim.keymap.set('n', '<C-q>', '<cmd>bdel<CR>', { desc = 'Close a buffer' })
+
+vim.keymap.set('n', '<BS>', '<cmd>confirm bdelete<CR>', { desc = 'Close a buffer' })
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = 'Write the current buffer' })
 
 vim.keymap.set('n', '-', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
 

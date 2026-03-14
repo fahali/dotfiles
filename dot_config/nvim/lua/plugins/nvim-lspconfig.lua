@@ -149,13 +149,29 @@ return {
 
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
+            'docker_language_server',
             'fish-lsp',
-            'jdtls',
+            'gopls',
+            -- NOTE: Java tooling
             'google-java-format',
             'java-debug-adapter',
             'java-test',
+            'jdtls',
+            -- END Java tooling
+            'jsonls',
+            'marksman',
+            'prettier',
+            -- NOTE: Python tooling
+            'black',
+            'pylsp',
+            -- END Python tooling
             'stylua',
             'tombi',
+            -- NOTE: XML tooling
+            'lemminx',
+            'xmlformatter',
+            -- END XML tooling
+            'yamlls',
         })
 
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }

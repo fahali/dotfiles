@@ -27,12 +27,18 @@ return {
             end
         end,
         formatters_by_ft = {
-            -- NOTE: install other formatters here
+            dockerfile = { 'dockerfmt' },
             fish = { 'fish_indent' },
+            go = { 'gofmt' },
             java = { 'google-java-format' },
+            json = { 'prettier' },
             lua = { 'stylua' },
+            markdown = { 'prettier' },
+            python = { 'black' },
             rust = { 'rustfmt' },
             toml = { 'tombi' },
+            yaml = { 'prettier' },
+            xml = { 'xmlformatter' },
         },
         formatters = {
             ['google-java-format'] = {
